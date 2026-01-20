@@ -11,12 +11,18 @@ import (
 // 获取对象的路径和要查找的关键词
 func getpk(dpath *[]string, keyword *string) {
 	fmt.Println("输入对应的路径(不同路径用空格分开)：")
-	var path string
-	fmt.Scanln(&path)             // 整行录入，以保证多文件搜索
-	*dpath = strings.Fields(path) // Fields去除空元素，保留有效路径
+	//用bufio.NewReader读取整行
+	reader := bufio.NewReader(os.Stdin)
+	path, err := reader.ReadString('\n') // 整行读取
+	if err != nil {
+		err.Error()
+		return
+	}
+	*dpath = strings.Fields(path)     // Fields去除空元素，保留有效路径
 
 	fmt.Println("请输入要查找的关键词：")
-	fmt.Scan(keyword)
+	keywordStr, _ := reader.ReadString('\n')
+	*keyword = strings.TrimSpace(keywordStr)
 }
 
 func main() {
