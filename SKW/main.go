@@ -13,15 +13,19 @@ func getpk(dpath *[]string, keyword *string) {
 	fmt.Println("输入对应的路径(不同路径用空格分开)：")
 	//用bufio.NewReader读取整行
 	reader := bufio.NewReader(os.Stdin)
-	path, err := reader.ReadString('\n') // 整行读取
-	if err != nil {
-		err.Error()
+	path, errP := reader.ReadString('\n') // 整行读取
+	if errP != nil {
+		errP.Error()
 		return
 	}
 	*dpath = strings.Fields(path)     // Fields去除空元素，保留有效路径
 
 	fmt.Println("请输入要查找的关键词：")
-	keywordStr, _ := reader.ReadString('\n')
+	keywordStr, errK := reader.ReadString('\n')
+	if errK != nil{
+		errK.Error()
+		return
+	}
 	*keyword = strings.TrimSpace(keywordStr)
 }
 
