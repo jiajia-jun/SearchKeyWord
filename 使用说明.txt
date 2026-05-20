@@ -7,11 +7,11 @@
     🚨文件对象注意标明【后缀】
 
     文件eg：
-        D:\test\shengyabaogao.txt
+        D:\testDir\testFile.txt
 
     目录eg：
-        D://test
-如果有多个路径，则用空格隔开即可
+        D:\testDir
+如果有多个路径，则用*空格隔开*即可
 
 3.输入查找的关键词
 
